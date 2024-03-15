@@ -1,17 +1,7 @@
 <template>
   <div>
 
-    <v-col
-          cols="12"
-        >
-          <v-text-field
-            v-model="inputText"
-            label="Digite uma tarefa"
-            outlined
-            clearable
-            @keyup.enter="handleAddTask"
-          ></v-text-field>
-        </v-col>
+    
 
     <v-list
       flat
@@ -32,7 +22,7 @@
       </v-list-item-group>
 
     </v-list>
-    <p>{{ $store.state.tarefas }}</p>
+    <!-- <p>{{ $store.state.tarefas }}</p> -->
   </div>
 </template>
 
@@ -42,17 +32,9 @@
   export default {
     name: 'Tarefas',
     components: { Tarefa },
-    data() {
-      return {
-        inputText: '',
+      created() {
+        this.$store.dispatch('getTasks')
         
-      }
-    },
-    methods: {
-      handleAddTask(){
-          this.$store.commit('addTask', this.inputText)
-          this.inputText = ''
-        }
       },
     }
 </script>

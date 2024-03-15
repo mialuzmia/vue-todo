@@ -5,7 +5,7 @@
       @click="tarefa.isDone = !tarefa.isDone"
     >
       <template v-slot:default="{ }">
-        <v-list-item-action>
+        <v-list-item-action @click="tarefa.isDone = !tarefa.isDone">
           <v-checkbox v-model="tarefa.isDone"></v-checkbox>
         </v-list-item-action>
 
@@ -18,12 +18,7 @@
         </v-list-item-content>
 
         <v-list-item-action>
-          <v-btn 
-          icon
-          @click.stop="handleDeleteTask(tarefa.id)"
-          >
-            <v-icon color="red lighten-1">mdi-trash-can</v-icon>
-          </v-btn>
+          <TarefaMenu :tarefa="tarefa"/>
         </v-list-item-action>
 
       </template>
@@ -35,9 +30,12 @@
 </template>
 
 <script>
+  import TarefaMenu from './TarefaMenu.vue';
+
   export default {
     name:'Tarefa',
     props: ['tarefa'],
+    components: { TarefaMenu },
     methods: {
       handleDeleteTask(id) {
         console.log(id)

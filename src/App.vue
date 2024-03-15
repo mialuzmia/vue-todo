@@ -1,24 +1,27 @@
 <template>
   <v-app id="inspire">
-    <!-- <v-navigation-drawer
-      v-model="drawer"
-      app
-    >
-
-    </v-navigation-drawer> -->
 
     <v-navigation-drawer v-model="drawer" app >
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="text-h6">
-            Vue.js
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            Lista de tarefas
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-
+      <v-img  
+      src="./assets/bg.jpg"
+      gradient="to top right, rgba(19,84,122,.5), rgba(28,108,199,.8)"
+      class="pt-5 text-center" 
+      height="185"
+      >
+        <v-avatar size="100">
+          <img src="https://github.com/mialuzmia.png">
+        </v-avatar>
+        <v-list-item dark>
+          <v-list-item-content>
+            <v-list-item-title class="text-h6">
+              Vue.js
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              Lista de tarefas
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+    </v-img>
       <v-divider></v-divider>
 
       <v-list
@@ -42,17 +45,12 @@
       </v-list>
     </v-navigation-drawer>
 
-    <!-- <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>Application</v-toolbar-title>
-    </v-app-bar> -->
-
     <v-app-bar
       app
       color="#fcb69f"
       dark
       prominent
+      height="185"
       src="./assets/bg.jpg"
     >
       <template v-slot:img="{ props }">
@@ -64,21 +62,11 @@
 
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-app-bar-title>Title</v-app-bar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
+      <!-- <v-app-bar-title class="mt-16">
+        Title
+      </v-app-bar-title> -->
+      
+      <TaskInput class="mt-16"/>
     </v-app-bar>
 
     <v-main>
@@ -88,7 +76,10 @@
 </template>
 
 <script>
+import TaskInput from '@/components/TaskInput.vue'
+
   export default {
+    components: { TaskInput },
     data: () => ({
       drawer: false,
       items: [
